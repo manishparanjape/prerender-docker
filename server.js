@@ -1,4 +1,5 @@
 const prerender = require('prerender');
+const cache = require('prerender-memory-cache');
 
 const forwardHeaders = require('./plugins/forwardHeaders');
 const stripHtml = require('./plugins/stripHtml');
@@ -22,8 +23,10 @@ server.use(healthcheck('_health'));
 server.use(forwardHeaders);
 server.use(prerender.blockResources());
 server.use(prerender.removeScriptTags());
+server.use(prerender.sendPrerenderHeader());
 server.use(removePrefetchTags);
 server.use(prerender.httpHeaders());
+server.use(cache);
 if (process.env.DEBUG_PAGES) {
 	server.use(consoleDebugger);
 }
