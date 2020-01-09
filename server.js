@@ -1,4 +1,4 @@
-const prerender = require('prerender');
+const prerender = require('prerender_manish');
 const cache = require('prerender-memory-cache');
 
 const forwardHeaders = require('./plugins/forwardHeaders');
