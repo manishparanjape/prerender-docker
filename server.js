@@ -26,6 +26,7 @@ server.use(prerender.removeScriptTags());
 server.use(prerender.sendPrerenderHeader());
 server.use(removePrefetchTags);
 server.use(prerender.httpHeaders());
+server.use(prerender.sendCacheHeaders());
 server.use(cache);
 if (process.env.DEBUG_PAGES) {
 	server.use(consoleDebugger);
